@@ -1,34 +1,31 @@
 <?xml version="1.0"?>
 
-<!--
-  ~ Hibernate, Relational Persistence for Idiomatic Java
-  ~
-  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
-  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
-  -->
+<!-- ~ Hibernate, Relational Persistence for Idiomatic Java ~ ~ License: 
+	GNU Lesser General Public License (LGPL), version 2.1 or later. ~ See the 
+	lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>. -->
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="gaia.cu1.mdb.cu4.du439.dm">
 
-    <class name="NSSSolution" table="NSSSOLUTION">
-        <id name="oid" type="long" column="OID">
-        </id>
-        <property name="solutionId" type="long" column="SOLUTION_ID"/>
-        <property name="sourceId" type="long" column="SOURCE_ID"/>
-        <array name="models" cascade="all" table="COMPOSITE">
-        	<key column="OID"/>
-      		<index column="CID"/>
-      		<element column="MODELS" type="Composite" not-null="true"/>
-        </array>
-        <property name="firstComp"  type="String" column="FIRST_COMP"/>
-        <property name="secondComp"  type="String" column="SECOND_COMP"/>
-        <property name="nParam"  type="short" column="N_PARAM"/>
-        <property name="objFunc"  type="double" column="OBJ_FUNC"/>
-        <property name="f2"  type="double" column="F2"/>
-        <property name="efficiency"  type="double" column="EFFICIENCY"/>
-        <property name="flags"  type="short" column="FLAGS"/>
-    </class>
+	<class name="NSSSolution" table="NSSSOLUTION">
+		<id name="oid" type="long" column="OID">
+		</id>
+		<property name="solutionId" type="long" column="SOLUTION_ID" />
+		<property name="sourceId" type="long" column="SOURCE_ID" />
+		<array name="models" cascade="all" table="COMPOSITE">
+			<key column="OID" />
+			<index column="CID" />
+			<element column="MODELS" type="Composite" not-null="true" />
+		</array>
+		<property name="firstComp" type="String" column="FIRST_COMP" />
+		<property name="secondComp" type="String" column="SECOND_COMP" />
+		<property name="nParam" type="short" column="N_PARAM" />
+		<property name="objFunc" type="double" column="OBJ_FUNC" />
+		<property name="f2" type="double" column="F2" />
+		<property name="efficiency" type="double" column="EFFICIENCY" />
+		<property name="flags" type="short" column="FLAGS" />
+	</class>
 
 </hibernate-mapping>

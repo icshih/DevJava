@@ -1,56 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-	<timestamp key="BY_DATE" datePattern="dd-MM-yyyy"/>
-	<property name="PATTERN" value="%d{dd/MM/yyyy HH:mm:ss} [%thread] %-5level %logger{16}:%L - %m%n" />
-	
-    <appender name="VTS_FILE" class="ch.qos.logback.classic.sift.SiftingAppender">
-        <!-- This is MDC default value if MDC is not set-->
-        <discriminator>
-            <key>logFileName</key>
-            <defaultValue>main</defaultValue>
-        </discriminator>
+	<timestamp key="BY_DATE" datePattern="dd-MM-yyyy" />
+	<property name="PATTERN"
+		value="%d{dd/MM/yyyy HH:mm:ss} [%thread] %-5level %logger{16}:%L - %m%n" />
 
-        <sift>
-            <!-- A standard RollingFileAppender, the log file is based on 'logFileName' at runtime  -->
-            <appender name="FILE-${logFileName}" class="ch.qos.logback.core.FileAppender">
-                <file>${logFileName}.log</file>
+	<appender name="VTS_FILE" class="ch.qos.logback.classic.sift.SiftingAppender">
+		<!-- This is MDC default value if MDC is not set -->
+		<discriminator>
+			<key>logFileName</key>
+			<defaultValue>main</defaultValue>
+		</discriminator>
+
+		<sift>
+			<!-- A standard RollingFileAppender, the log file is based on 'logFileName' 
+				at runtime -->
+			<appender name="FILE-${logFileName}" class="ch.qos.logback.core.FileAppender">
+				<file>${logFileName}.log</file>
 				<prudent>true</prudent>
-                <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-                <Pattern>${PATTERN}</Pattern>
-                </encoder>
-            </appender>
-        </sift>
-    </appender>
-    
+				<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+					<Pattern>${PATTERN}</Pattern>
+				</encoder>
+			</appender>
+		</sift>
+	</appender>
+
 	<appender name="HTMLFILE" class="ch.qos.logback.core.FileAppender">
 		<append>false</append>
-    	<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-         <layout class="ch.qos.logback.classic.html.HTMLLayout">
-          <Pattern>%d{dd/MM/yyyy HH:mm:ss}%thread%level%logger%L%m</Pattern>
-         </layout>
-        </encoder>
-        <file>src/main/resources/templates/log.html</file>
-    </appender>
-    
-    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-    	<file>logs/log-${BY_DATE}.out</file>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-        <Pattern>${PATTERN}</Pattern>
-        </encoder>
-    </appender>
-    
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-        <pattern>${PATTERN}</pattern>
-        </encoder>
-    </appender>
+		<encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout class="ch.qos.logback.classic.html.HTMLLayout">
+				<Pattern>%d{dd/MM/yyyy HH:mm:ss}%thread%level%logger%L%m</Pattern>
+			</layout>
+		</encoder>
+		<file>src/main/resources/templates/log.html</file>
+	</appender>
 
-    <root level="DEBUG">
-    	<appender-ref ref="VTS_FILE" />
-    	<appender-ref ref="HTMLFILE" />
-    	<appender-ref ref="FILE" />
-        <appender-ref ref="CONSOLE" />
-    </root>
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>logs/log-${BY_DATE}.out</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>${PATTERN}</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>${PATTERN}</pattern>
+		</encoder>
+	</appender>
+
+	<root level="DEBUG">
+		<appender-ref ref="VTS_FILE" />
+		<appender-ref ref="HTMLFILE" />
+		<appender-ref ref="FILE" />
+		<appender-ref ref="CONSOLE" />
+	</root>
 
 </configuration>
