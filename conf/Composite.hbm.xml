@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="gaia.cu1.mdb.cu4.du439.dm">
+
+    <class name="Composite" table="COMPOSITE">
+    	<id name="cid" type="long" column="CID">
+        </id>
+        <array name="params" cascade="all" table="NSSPARAM">
+        	<key column="CID"/>
+      		<index column="PID"/>
+      		<element column="PARAMS" type="NSSParam" not-null="true"/>
+        </array>
+        <property name="solutionId" type="long" column="SOLUTION_ID"/>
+        <property name="sourceId" type="long" column="SOURCE_ID"/>
+        <property name="modelId"  type="String" column="MODEL_ID"/>
+        <property name="objFunc"  type="double" column="OBJ_FUNC"/>
+        <property name="efficiency"  type="double" column="EFFICIENCY"/>
+        <property name="doF"  type="short" column="DOF"/>
+        <property name="dimObs"  type="byte" column="DIM_OBS"/>
+        <property name="nTrans"  type="short" column="N_TRANS"/>
+        <property name="f2"  type="double" column="F2"/>
+        <property name="additiveNoise"  type="double" column="ADDITIVE_NOISE"/>
+        <property name="flags"  type="double" column="FLAGS"/>
+    </class>
+
+</hibernate-mapping>
