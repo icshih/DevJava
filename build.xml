@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project name="DevJava" default="compile" basedir=".">
+
+	<property name="author" value="I-Chun Shih" />
+	<property name="mail.dul" value="icshih@mac.com" />
+	<property name="project-name" value="DevJava" />
+	<property name="project-description" value="Collection of development/test codes in Java" />
+	<property name="distribution-name" value="DevJava" />
+	<property name="productId" value="DevJava"/>
+	<property name="setversion" value="true" />
+	<property name="svn.revision" value="0" />
+	
+	<!-- Import common targets and definitions -->
+	<property name="jdkTarget" value="1.8"/>
+	<property environment="env" />
+	<property name="sofcommon" value="${env.SOFCOMMON}" />
+	<import file="${sofcommon}/build_project_ivy.xml" />
+	
+</project>

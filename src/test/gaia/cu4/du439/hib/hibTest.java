@@ -1,14 +1,14 @@
 package test.gaia.cu4.du439.hib;
 
-import static org.junit.Assert.*;
-
-import javax.persistence.Persistence;
+import java.io.File;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.service.ServiceRegistry;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -31,12 +31,14 @@ public class hibTest {
 
 	@Before
 	public void setUp() throws Exception {
-		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-				.configure()
+		File conf = new File("conf/hibernate.cfg.xml");
+		ServiceRegistry registry = new StandardServiceRegistryBuilder()
+				.configure(conf)
 				.build();
-		sessionFactory = new MetadataSources(registry)
-				.buildMetadata()
-				.buildSessionFactory();
+		MetadataSources sources = new MetadataSources(registry);
+//		sources.addDirectory(new File("conf"));
+		sources.addFile("conf/NSSSolution.hbm.xml");
+		sources.buildMetadata().buildSessionFactory();
 	}
 
 	@After
@@ -45,7 +47,12 @@ public class hibTest {
 
 	@Test
 	public void test() {
-		
+		Session session = sessionFactory.getCurrentSession();
+		Transaction tx = session.getTransaction();
+		tx.begin();
+		System.out.println(tx.getStatus().name());
+		tx.commit();
+		System.out.println("Done");
 	}
 
 }
