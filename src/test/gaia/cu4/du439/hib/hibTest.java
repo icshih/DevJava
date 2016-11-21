@@ -1,4 +1,4 @@
-package gaia.cu4.du439.hib;
+package test.gaia.cu4.du439.hib;
 
 import static org.junit.Assert.*;
 
