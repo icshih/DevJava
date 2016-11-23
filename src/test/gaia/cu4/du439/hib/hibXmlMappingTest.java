@@ -36,10 +36,10 @@ public class hibXmlMappingTest {
 				.configure(conf)
 				.build();
 		MetadataSources sources = new MetadataSources(registry);
-//		sources.addDirectory(new File("conf"));
-		sources.addFile("conf/NSSSolutionId.hbm.xml");
-		sources.addFile("conf/CompositeId.hbm.xml");
-		sources.addFile("conf/NSSParamId.hbm.xml");
+		sources.addDirectory(new File("conf"));
+//		sources.addFile("conf/NSSSolutionId.hbm.xml");
+//		sources.addFile("conf/CompositeId.hbm.xml");
+//		sources.addFile("conf/NSSParamId.hbm.xml");
 		sources.buildMetadata().buildSessionFactory();
 	}
 
