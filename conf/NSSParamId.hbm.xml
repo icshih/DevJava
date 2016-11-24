@@ -13,7 +13,12 @@
 		<id name="id" type="long" column="NSSP_ID">
 			<generator class="sequence"/>
 		</id>
-		<property name="name" type="string"/>
+		<property name="name">
+			<type name="org.hibernate.type.EnumType">
+			<param name="enumClass">gaia.cu1.mdb.cu4.du439.dm.ParamTypes</param>
+        	<param name="useNamed">true</param>
+        	</type>
+		</property>
 		<property name="isUsed" type="boolean"/>
 		<property name="isConstrained" type="boolean"/>
 		<property name="isDerived" type="boolean"/>

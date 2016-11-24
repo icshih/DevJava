@@ -19,8 +19,16 @@
 			<list-index column="idx" />
 			<one-to-many class="main.gaia.cu4.du439.hib.CompositeId" />
 		</array>
-		<property name="firstComp" type="string" />
-		<property name="secondComp" type="string" />
+		<array name="firstComp" cascade="all" table="FIRSTCOMP_TABLE">
+			<key column="NSSS_ID"/>
+			<index column="FC_IDX"/>
+			<element column="FIRSTCOMP" type="string" not-null="true"/>
+		</array>
+		 <array name="secondComp" cascade="all" table="SECONDCOMP_TABLE">
+			<key column="NSSS_ID"/>
+			<index column="SC_IDX"/>
+			<element column="SECONDCOMP" type="string" not-null="true"/>
+		</array>
 <!-- 		<property name="nParam"/> -->
 		<property name="objFunc" type="double" />
 		<property name="f2" type="double" />

@@ -19,7 +19,12 @@
 		</array>
 		<property name="solutionId" type="long"/>
 		<property name="sourceId" type="long"/>
-		<property name="modelId" type="string"/>
+		<property name="modelId">
+			<type name="org.hibernate.type.EnumType">
+			<param name="enumClass">gaia.cu1.mdb.cu4.du439.dm.ModelTypes</param>
+        	<param name="useNamed">true</param>
+        	</type>
+		</property>
 		<property name="objFunc" type="double"/>
 		<property name="efficiency" type="double"/>
 		<property name="doF" type="short"/>
