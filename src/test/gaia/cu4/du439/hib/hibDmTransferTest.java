@@ -61,7 +61,9 @@ public class hibDmTransferTest {
 		NSSSolution recovered = NSSSolutionId.toNSSSolutionImpl(transfered);
 		assertTrue( transfered.getId() == 0 );
 		assertEquals( recovered.getSourceId(), origin.getSourceId() );
-		assertTrue( recovered.getModels().equals(origin.getModels()) );
+		TwoBodySolution[] ot= origin.getModels();
+		TwoBodySolution[] rt = recovered.getModels();
+		assertTrue( ot[0].getSourceId() == rt[0].getSourceId() );
 		assertTrue( recovered.getFirstComp().equals(origin.getFirstComp()) );
 	}
 
@@ -74,7 +76,10 @@ public class hibDmTransferTest {
 		assertTrue( transfered.getId() == 0 );
 		assertEquals( recovered.getSourceId(), origin.getSourceId() );
 		assertTrue( recovered.getModelId().equals(origin.getModelId()) );
-		assertTrue( recovered.getParams().equals(origin.getParams()) );
+		NSSParam[] o = origin.getParams();
+		NSSParam[] r = recovered.getParams();
+		assertTrue( o.length == r.length );
+		assertEquals( o[0].getName(), r[0].getName() );
 	}
 	
 	@Test

@@ -1,6 +1,11 @@
 package main.gaia.cu4.du439.hib;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import gaia.cu1.mdb.cu4.du439.dm.Composite;
+import gaia.cu1.mdb.cu4.du439.dm.NSSParam;
 import gaia.cu1.mdb.cu4.du439.dmimpl.CompositeImpl;
 
 public class CompositeId extends CompositeImpl {
@@ -11,6 +16,8 @@ public class CompositeId extends CompositeImpl {
 	private static final long serialVersionUID = 1L;
 	
 	private long id;
+
+	private main.gaia.cu4.du439.hib.NSSParamId[] paramsId;
 	
     public long getId() {
 	    return this.id;
@@ -20,6 +27,15 @@ public class CompositeId extends CompositeImpl {
 	    this.id = id;
 	}
 	
+    public main.gaia.cu4.du439.hib.NSSParamId[] getParamsId() {
+        return this.paramsId;
+    }
+
+
+    public void setParamsId(main.gaia.cu4.du439.hib.NSSParamId[] paramsId) {
+        this.paramsId = paramsId;
+    }
+	
 	static public CompositeId fromCompositeImpl(Composite composite) {
 		if( composite == null )
 			return null;
@@ -27,7 +43,9 @@ public class CompositeId extends CompositeImpl {
 		CompositeId object = new CompositeId();
 		object.setSolutionId(composite.getSolutionId());
 		object.setSourceId(composite.getSourceId());
-		object.setParams(composite.getParams());
+		List<NSSParamId> list = Stream.of(composite.getParams())
+			.map(p -> NSSParamId.fromNSSParamImpl(p)).collect(Collectors.toList());
+		object.setParamsId(list.toArray(new NSSParamId[0]));
 		object.setModelId(composite.getModelId());
 		object.setObjFunc(composite.getObjFunc());
 		object.setCovVec(composite.getCovVec());
@@ -52,7 +70,9 @@ public class CompositeId extends CompositeImpl {
 		CompositeImpl object = new CompositeImpl();
 		object.setSolutionId(compositeId.getSolutionId());
 		object.setSourceId(compositeId.getSourceId());
-		object.setParams(compositeId.getParams());
+		List<NSSParam> list = Stream.of(compositeId.getParamsId())
+				.map(p -> NSSParamId.toNSSParamImpl(p)).collect(Collectors.toList());
+		object.setParams(list.toArray(new NSSParam[0]));
 		object.setModelId(compositeId.getModelId());
 		object.setObjFunc(compositeId.getObjFunc());
 		object.setCovVec(compositeId.getCovVec());
@@ -69,5 +89,4 @@ public class CompositeId extends CompositeImpl {
 		
 		return object;
 	}	
-
 }

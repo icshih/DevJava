@@ -48,11 +48,6 @@ public class hibXmlMappingTest {
 
 	@Test
 	public void test() {
-		Session session = sessionFactory.getCurrentSession();
-		Transaction tx = session.getTransaction();
-		tx.begin();
-		System.out.println(tx.getStatus().name());
-		tx.commit();
 		System.out.println("Done");
 	}
 
