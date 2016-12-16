@@ -19,6 +19,7 @@
 			<exclude module="GaiaMdbDm" />
 		</dependency>
 		<dependency org="gaia.cu1.mdb" name="GaiaMdbDm" rev="18.0.3" />
+		<dependency name="GaiaCu4Dm" org="gaia.dpcc.dm" rev="19.0.3a"/>
 		<dependency org="gaia.cu9.dm" name="CU9ArchiveDm" rev="18.4.5"/>
 		
 		<dependency org="org.apache.commons" name="commons-compress"
