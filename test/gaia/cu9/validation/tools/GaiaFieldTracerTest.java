@@ -15,6 +15,7 @@ import gaia.cu1.mdb.cu4.du439.dm.NSSSolution;
 import gaia.cu1.tools.exception.GaiaException;
 import gaia.cu1.tools.util.props.PropertyLoader;
 import gaia.cu4.nss.epochparams.dm.StarObject;
+import gaia.cu4.nss.epochparams.dm.Transit;
 import gaia.cu9.archive.architecture.core.dm.GaiaSource;
 
 public class GaiaFieldTracerTest {
@@ -128,6 +129,10 @@ public class GaiaFieldTracerTest {
 		assertEquals(1, mgs.size());
 	}
 	
+	@Test
+	public void getPropertiesTest() {
+		test.getProperties(Transit.class);
+	}
 	@Test
 	public void matchGaiaDmTest() {
 		String string = "java.util.List<gaia.cu4.nss.epochparams.dm.EBElementary>";

@@ -72,17 +72,8 @@ public class GaiaFieldTracer {
     
     List<Field> recurseSuperClasses(String dmClaz) {
     	List<Field> fieldList = new ArrayList<>();
-//    	Class<?> superClaz = null;
 		try {
 			fieldList = recurseSuperClasses(Class.forName(dmClaz));
-//			do {
-//				fieldList.addAll(Stream.of(claz.getDeclaredFields())
-//					.filter(f -> f.getModifiers() == 4)
-//					.collect(Collectors.toList()));
-//				superClaz = claz.getSuperclass();
-//				LOG.debug("{} <- {}", claz.getName(), superClaz.getName());
-//				claz = superClaz;
-//			} while (!superClaz.equals(Object.class));
 		} catch (ClassNotFoundException e) {
 			LOG.error("Cannot obtain the class, see ", e);
 		} catch (GaiaException e) {
@@ -205,15 +196,13 @@ public class GaiaFieldTracer {
 			return null;
 	}
 
-	void getProperties(Class<?> dmClaz, List<String> nodes) {
+	void getProperties(Class<?> dmClaz) {
 		String template = "<property name=\"%s\" type=\"%s\"/>";
-		Class<?> claz;
+		Set<String> nodes = getNodeMap(dmClaz).keySet();
 		try {
-			claz = ObjectFactory.getImplementingClass(dmClaz);
-			Stream.of(claz.getDeclaredFields())
-			.filter(f -> f.getModifiers() == 4)
-			.filter(f -> !nodes.contains(matchGaiaDm(f.getGenericType().getTypeName())))
-			.forEach(f -> System.out.println(String.format(template, f.getName(), f.getType().getName())));
+			recurseSuperClasses(dmClaz).stream()
+				.filter(f -> !nodes.contains(matchGaiaDm(f.getGenericType().getTypeName())))
+				.forEach(f -> System.out.println(String.format(template, f.getName(), f.getType().getName())));
 		} catch (GaiaException e) {
 			LOG.error("Cannot obtain the class implementation, see ", e);
 		}
