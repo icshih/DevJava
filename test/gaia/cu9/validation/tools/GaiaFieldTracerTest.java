@@ -10,13 +10,17 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import gaia.cu1.gaiatools.test.dm.AgisSource;
 import gaia.cu1.mdb.cu3.agis.dm.Source;
 import gaia.cu1.mdb.cu4.du439.dm.NSSSolution;
 import gaia.cu1.tools.exception.GaiaException;
 import gaia.cu1.tools.util.props.PropertyLoader;
+import gaia.cu4.nss.epochparams.dm.CU7Periodicity;
+import gaia.cu4.nss.epochparams.dm.EBElementary;
 import gaia.cu4.nss.epochparams.dm.StarObject;
 import gaia.cu4.nss.epochparams.dm.Transit;
 import gaia.cu9.archive.architecture.core.dm.GaiaSource;
+import gaia.cu9.validation.dm.TestResult;
 
 public class GaiaFieldTracerTest {
 
@@ -40,6 +44,13 @@ public class GaiaFieldTracerTest {
 	public void tearDown() throws Exception {
 	}
 
+	@Test
+	public void PrintPropertyTest() {
+		GaiaFieldTracer cu3 = new GaiaFieldTracer(TestResult.class);
+		cu3.fieldList.stream()
+		.forEach(f -> System.out.println(String.format("<property name=\"%s\" type=\"%s\"/>", f.getName(), f.getType().getSimpleName().toLowerCase())));
+	}
+	
 	@Test
 	public void CU4Test() {
 		GaiaFieldTracer cu4 = new GaiaFieldTracer(NSSSolution.class);
