@@ -21,7 +21,7 @@
 		<dependency org="gaia.cu1.mdb" name="GaiaMdbDm" rev="19.0.0" />
 		<dependency name="GaiaCu4Dm" org="gaia.dpcc.dm" rev="19.0.3a"/>
 		<dependency org="gaia.cu9.dm" name="CU9ArchiveDm" rev="18.4.5"/>
-		<dependency org="gaia.cu9.dm" name="CU9ValidationDm" rev="18.3.1"/>
+		<!--dependency org="gaia.cu9.dm" name="CU9ValidationDm" rev="18.3.1"/-->
 		<dependency org="org.apache.commons" name="commons-compress"
 			rev="1.9" />
 		<dependency org="junit" name="junit" rev="4.11" />
