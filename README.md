@@ -2,9 +2,11 @@
 
 ## Tools for Validation database
 
- * **ValDbDateTimer**: providing data/time generator for data/time fields in Validation dm
+The additions are scheduled for R_19.1
+
+ * **ValDbDateTimer**: providing data/time generator for data/time fields in CU9 Validation DM
  * Auto-incremental for series identifier (In progress)
- * Random string generator for `runId` field (TBD)
+ * **RunIdGenerator**: Random string generator for `runId` field
 
 ## Data persistence with Hibernate
 

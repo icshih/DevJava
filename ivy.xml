@@ -12,13 +12,11 @@
 		<dependency org="org.hibernate" name="hibernate-core" rev="5.2.4.Final" />
 		<dependency org="dom4j" name="dom4j" rev="1.6.1" />
 		<!-- Gaia modules -->
-		<dependency org="gaia.cu1.tools" name="GaiaTools" rev="19.0.0">
-			<exclude module="slf4j-log4j12" />
-			<exclude module="log4j" />
-			<exclude module="slf4j-api" />
-			<exclude module="GaiaMdbDm" />
-		</dependency>
-		<dependency org="gaia.cu1.mdb" name="GaiaMdbDm" rev="19.0.0" />
+		<dependency org="gaia.cu1.tools" name="GaiaTools" rev="19.3.3">
+        	<exclude module="slf4j-log4j12"/>
+        	<exclude module="log4j"/>
+        	<exclude module="slf4j-api"/>
+        </dependency>
 		<dependency name="GaiaCu4Dm" org="gaia.dpcc.dm" rev="19.0.3a"/>
 		<dependency org="gaia.cu9.dm" name="CU9ArchiveDm" rev="18.4.5"/>
 		<!--dependency org="gaia.cu9.dm" name="CU9ValidationDm" rev="18.3.1"/-->
@@ -27,7 +25,7 @@
 		<dependency org="junit" name="junit" rev="4.11" />
 		<dependency org="org.slf4j" name="slf4j-api" rev="1.7.12" />
 		
-		<dependency org="org.postgresql" name="postgresql" rev="9.4.1212.jre7" />
+		<dependency org="org.postgresql" name="postgresql" rev="9.3-1102-jdbc41"/>
 		<dependency org="org.apache.derby" name="derbyclient" rev="10.13.1.1"/>
 	</dependencies>
 </ivy-module>
