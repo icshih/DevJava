@@ -4,8 +4,8 @@
 
 The additions are scheduled for R_19.1
 
- * **ValDbDateTimer**: providing data/time generator for data/time fields in CU9 Validation DM
- * Auto-incremental for series identifier (In progress)
+ * **ValDbDateTimer**: providing data/time generator for data/time fields in CU9 Validation DM (Done)
+ * **ValDbUtility**: converting DM property of *CREATE TABLE* to use auto-incremental column.
  * **RunIdGenerator**: Random string generator for `runId` field
 
 ## Data persistence with Hibernate
