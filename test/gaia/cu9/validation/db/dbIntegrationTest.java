@@ -93,9 +93,9 @@ public class dbIntegrationTest {
 			colNames[2] = "gmdbcomment";
 			colNames[3] = "flag";
 			Object[] colValues = new Object[4];
-			LocalDateTime now = ValDbDataTimer.getDateTimeNow();
-			colValues[0] = ValDbDataTimer.getDate(now);
-			colValues[1] = ValDbDataTimer.getTime(now);
+			LocalDateTime now = ValDbDateTimer.getDateTimeNow();
+			colValues[0] = ValDbDateTimer.getDate(now);
+			colValues[1] = ValDbDateTimer.getTime(now);
 			colValues[2] = "This is an unit test";
 			colValues[3] = TestResultFlag.ERROR.name();
 			postgres.updateObject(dmClass, colNames, colValues, TESTCASE, RUNID);
@@ -121,9 +121,9 @@ public class dbIntegrationTest {
 	TestResult TestResult(int i) {
 		TestResult object = new TestResultImpl();
 		object.setRunId(generator.next());
-		LocalDateTime now = ValDbDataTimer.getDateTimeNow();
-		object.setStartDate(ValDbDataTimer.getDate(now));
-		object.setStartTime(ValDbDataTimer.getTime(now));
+		LocalDateTime now = ValDbDateTimer.getDateTimeNow();
+		object.setStartDate(ValDbDateTimer.getDate(now));
+		object.setStartTime(ValDbDateTimer.getTime(now));
 		object.setTestCase("testCase00" + i);
 		object.setDescription("Unit test case " + i);
 		object.setFlag(TestResultFlag.PENDING.name());

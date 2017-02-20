@@ -7,7 +7,7 @@ import java.time.LocalTime;
 
 import gaia.cu9.validation.common.ValidationException;
 
-public class ValDbDataTimer {
+public class ValDbDateTimer {
 
 	/**
 	 * Get duration in second between start and end data-time.
